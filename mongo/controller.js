@@ -1,4 +1,4 @@
-//TO DO get the config of the path to the DB
+//TO DO get the config of the path to the DB 
 
 const ToDo = require("./todo");
 
@@ -10,5 +10,18 @@ main().catch(err => console.log(err));
 async function main() {
     await mongoose.connect('mongodb:///*path to db*/');
 }
+
+addTask
+
+listTask
+                  
+listAll
+                  
+updateTask
+                  
+deleteTask
+                  
+showTaskState 
+
 
 
