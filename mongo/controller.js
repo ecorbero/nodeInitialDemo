@@ -10,12 +10,23 @@ main().catch(err => console.log(err));
 async function main() {
     await mongoose.connect('mongodb:///*path to db*/');
 }
+//necessary???
+
+searchById
 
 addTask
 
 listTask
-                  
-listAll
+
+const listAll = async () => {
+    try {
+        const list = await ToDo.find();
+        console.log(list);
+   } catch (err) {
+    console.error(err);
+   }
+
+}
                   
 updateTask
                   
@@ -25,3 +36,13 @@ showTaskState
 
 
 
+
+module.exports = {
+	addTask,
+	listTask,
+    listAll,
+	updateTask,
+	deleteTask,
+	showTaskState,
+	searchById
+};
