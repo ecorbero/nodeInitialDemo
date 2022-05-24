@@ -41,10 +41,12 @@ const listAll = async () => {
 }
                   
 updateTask
+// one option incorporates the search logic
 // ToDo.updateOne()
 // ToDo.findOneAndUpdate()
                   
 deleteTask
+//one option incorporates the search logic
 // ToDo.deleteOne()
 // ToDo.findeOneAndDelete()
 
