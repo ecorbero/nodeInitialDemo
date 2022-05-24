@@ -1,5 +1,5 @@
 //this document contains info that should be divided 
-//into at probably model, functions and app..
+//into model, functions/controller and app..
 
 https://mongoosejs.com/docs/index.html
 

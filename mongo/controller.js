@@ -1,3 +1,4 @@
+
 //TO DO get the config of the path to the DB 
 
 const ToDo = require("./todo");
@@ -11,10 +12,22 @@ async function main() {
     await mongoose.connect('mongodb:///*path to db*/');
 }
 //necessary???
-
 searchById
+//(ToDo.find({}))
 
-addTask
+//LIST OF QUERIES:
+//https://mongoosejs.com/docs/api/query.html
+
+
+const addTask = async(text, userName) => {
+/*
+Would it be something like this?
+const todo1 = new ToDo( {text:someText, 
+     userName: someName}); */
+
+
+}
+
 
 listTask
 
@@ -22,17 +35,22 @@ const listAll = async () => {
     try {
         const list = await ToDo.find();
         console.log(list);
-   } catch (err) {
+    } catch (err) {
     console.error(err);
-   }
-
+    }
 }
                   
 updateTask
+// ToDo.updateOne()
+// ToDo.findOneAndUpdate()
                   
 deleteTask
+// ToDo.deleteOne()
+// ToDo.findeOneAndDelete()
+
                   
 showTaskState 
+//
 
 
 
