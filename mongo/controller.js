@@ -1,7 +1,6 @@
 
-//TO DO get the config of the path to the DB 
 
-const ToDo = require("./todo");
+const ToDo = require("../models/todo");
 
 //open conncetion to database
 const mongoose = require('mongoose');
