@@ -52,7 +52,7 @@ updateTask
 deleteTask
 //one option incorporates the search logic
 // ToDo.deleteOne()
-// ToDo.findeOneAndDelete()
+// ToDo.findOneAndDelete()
 
                   
 showTaskState 
