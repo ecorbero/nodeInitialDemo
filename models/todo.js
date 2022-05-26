@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 //creating schema
-const todoSchema = new mongoose.Schema({
-                _id:  int,    
+const taskSchema = new mongoose.Schema({
+                id:  Number,    
                 text: String, 
                 state: { type: String, default: 'pending' }, 
                 initDate: { type: Date, default: Date.now }, 
@@ -12,7 +12,7 @@ const todoSchema = new mongoose.Schema({
 
 
 //compiling the schema into a Model.
-const ToDo = mongoose.model('ToDo', todoSchema);
+const ToDo = mongoose.model('ToDo', taskSchema);
 
 module.exports = ToDo;
 
