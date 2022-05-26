@@ -9,7 +9,7 @@ main().catch(err => console.log(err));
 
 //TO DO the config of the path should probably be parametres???
 async function main() {
-    await mongoose.connect('mongodb:///*path to db*/');
+    await mongoose.connect('mongodb://localhost:27017/test');
 }
 //necessary???
 searchById
