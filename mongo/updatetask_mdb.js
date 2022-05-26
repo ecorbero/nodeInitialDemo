@@ -25,13 +25,12 @@ console.log(toDo2);
 
                   
 const updateTask = async (id, newState) => {
-    const filter = { id: 1 }
+    const filter = { id: id }
     const update = { state: newState }
-
+    console.log(newState,);
     let doc = await ToDo.findOneAndUpdate(filter, update);
 
 
-    console.log(toDo1);
 }         
 
 updateTask(1, 'executing')
