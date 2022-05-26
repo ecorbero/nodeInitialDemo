@@ -40,7 +40,7 @@ const listAll = async () => {
         const list = await ToDo.find();
         console.log(list);
     } catch (err) {
-    console.error(err);
+        console.error(err);
     }
 }
                   

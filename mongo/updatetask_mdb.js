@@ -5,31 +5,37 @@
  * ShowTaskState
  */
 const ToDo = require("./todo");
-
 //open conncetion to database
 const mongoose = require('mongoose');
+
 main().catch(err => console.log(err));
 
 //TO DO the config of the path should probably be parametres???
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/todo');
+    await mongoose.connect('mongodb://localhost:27017/todoDB');
 }
 
-const toDo1 = new ToDo({_id: 1, text: 'Something to do.', userName: 'Elías'})
-
-console.log(toDo1);
+let toDo1 = new ToDo({id: 1, text: 'Something to do.', userName: 'Elías'})
+let toDo2 = new ToDo({id: 2, text: 'Something to do 2.', userName: 'Huerta'})
+toDo1.save()
+toDo2.save()
+console.log(toDo2);
 //LIST OF QUERIES:
 //https://mongoosejs.com/docs/api/query.html
 
                   
-const updateTask = async (id) => {
-    // one option incorporates the search logic
-    // ToDo.updateOne()
-    // ToDo.findOneAndUpdate()
-    
-    console.log("update");
+const updateTask = async (id, newState) => {
+    const filter = { id: 1 }
+    const update = { state: newState }
+
+    let doc = await ToDo.findOneAndUpdate(filter, update);
+
+
+    console.log(toDo1);
 }         
-                  
+
+updateTask(1, 'executing')
+
 const showTaskState = async () => {
     console.log("showtaskstate");
 }
