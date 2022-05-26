@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 //TO DO articulate the properties and keys of
 //the schema should we have a userId? should each document
 // be a user with an array of tasks? 
-const todoSchema = new mongoose.Schema({        
+const todoSchema = new mongoose.Schema({
+                _id:  ,    
                 text: String, 
                 state: { type: String, default: 'pending' }, 
                 initDate: { type: Date, default: Date.now }, 

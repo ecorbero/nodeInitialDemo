@@ -9,10 +9,18 @@ main().catch(err => console.log(err));
 
 //TO DO the config of the path should probably be parametres???
 async function main() {
+<<<<<<< HEAD
+    await mongoose.connect('mongodb://localhost:27017/todo');
+=======
     await mongoose.connect('mongodb://localhost:27017/test');
+>>>>>>> 4638a898b9d8bf166380a031d1d2821776878202
 }
-//necessary???
-searchById
+
+
+
+
+
+//searchById
 //(ToDo.find({}))
 
 //LIST OF QUERIES:
