@@ -1,4 +1,4 @@
-
+const formatDate = require('../controllers/formatdate.js')
 //TO DO get the config of the path to the DB 
 /**
  * UpdateTask
@@ -26,22 +26,28 @@ async function main() {
 
                   
 const updateTask = async (id, newState) => {
-    const searchID = await ToDo.find({id: id})
-    if (!searchID) {
+    const filter = { id: id };
+    const updateState = { state: newState };
+    let updateDate = { completData: null };
+    const idToSearch = await ToDo.exists(filter)
+    if (idToSearch === null) {
         console.log(`ID ${id} doesn't exist!`);
     } else {
-        const filter = { id: id }
-        const update = { state: newState }
-        let doc = await ToDo.findOneAndUpdate(filter, update);
+        if (newState !== 'executing' && newState !== 'pending' && newState !== 'completed') {
+            console.log('Input not valid.');
+        } else {
+            const doc = await ToDo.findOneAndUpdate(filter, updateState);
+            const doc2 = await ToDo.findOneAndUpdate(filter, updateDate); //Poner fecha como null por defecto por si se pasa de completed a executing.
+        }
+        if (newState === 'completed') {
+            updateDate = { completData: Date.now() };
+            const doc = await ToDo.findOneAndUpdate(filter, updateDate);
+        }
     }
-    
-    //console.log(toDo2);
-
-
 
 }         
 
-updateTask(2, 'executing')
+updateTask(41, 'completed');
 
 const showTaskState = async () => {
     console.log("showtaskstate");
