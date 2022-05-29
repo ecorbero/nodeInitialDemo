@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const main = require('./menu/main');
 const showMenu = require('./menu/showMenu');
 const menuFormat = require('./menu/menuFormat');
@@ -18,6 +20,7 @@ const pause = () => {
 }
 
 const menuMain = async (jsonMongo) => {
+    
     let opt = '';
     do {    
         opt = await main();
@@ -29,12 +32,22 @@ const menuMain = async (jsonMongo) => {
             break; 
             case '2':
                 const id2 = await showMenu('Write ID to update: ');
-                if (searchById(readData(), id2) === -1){
-                    console.log("Task doesn't exist.");
-                } else {
-                    const state = await showMenu('Select pending/executing/completed: ');
-                    updateTask(id2, state);
-                }    
+                if (jsonMongo === '1') {
+                    if (searchById(readData(), id2) === -1) {
+                        console.log("Task doesn't exist.");                    
+                    } else {
+                        const state = await showMenu('Select pending/executing/completed: ');
+                        updateTask(id2, state);
+                    }    
+                } else if (jsonMongo === '2') {
+                    if (await searchById(id2) === null) {
+                        console.log("Task doesn't exist.");                    
+                    } else {
+                        const state = await showMenu('Select pending/executing/completed: ');
+                        updateTask(id2, state);
+                    }    
+                }
+        
             break;
             case '3':
                 const id3 = await showMenu('Write ID to delete: ');
@@ -71,8 +84,15 @@ const menuMain = async (jsonMongo) => {
             readData = require('./controllers/readData');  
             menuMain(opt);
         break; 
-        case '2':
+        case '2': //Mongo DB selected
+            mainDB().catch(err => console.log(err));
+            async function mainDB() {
+                await mongoose.connect('mongodb://localhost:27017/todoDB'); 
+            }
             updateTask = require('./controllers/updatetask_mdb'); 
+            showTaskState = require('./controllers/updatetask_mdb'); 
+            searchById = require('./controllers/searchbyid_mdb');  
+            menuMain(opt);
         break;
     
     }     
