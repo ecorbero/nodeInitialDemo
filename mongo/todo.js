@@ -9,7 +9,7 @@ const taskSchema = new mongoose.Schema({
                 text: String, 
                 state: { type: String, default: 'pending' }, 
                 initDate: { type: Date, default: Date.now }, 
-                completData: { type: Date, default: null },
+                completDate: { type: Date, default: null },
                 userName: { type: String, required: true }
             });
 
