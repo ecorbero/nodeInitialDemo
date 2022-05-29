@@ -30,11 +30,9 @@ const updateTask = async (id, newState) => {
     } else {
         await ToDo.findOneAndUpdate(filter, updateState);
         await ToDo.findOneAndUpdate(filter, updateDate);//Poner fecha como null por defecto por si se pasa de completed a executing.
-        console.log("otroo!!!!")
         if (newState === 'completed') {
             updateDate = { completDate: Date.now() };
             await ToDo.findOneAndUpdate(filter, updateDate);
-            console.log("completedd!!!!")
         }
         console.log(`Task with ID ${id} is ${newState}.`)
     }      
