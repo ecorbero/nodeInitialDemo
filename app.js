@@ -1,14 +1,8 @@
-const addTask = require('./controllers/addtask');
-const listTask = require('./controllers/listtask');  
-const listAll = require('./controllers/listall'); 
-const updateTask = require('./controllers/updatetask');  
-const deleteTask = require('./controllers/deletetask');  
-const showTaskState = require('./controllers/showtaskstate');  
-const searchById = require('./controllers/searchbyid');  
-const readData = require('./controllers/readData');  
-
 const main = require('./menu/main');
 const showMenu = require('./menu/showMenu');
+const menuFormat = require('./menu/menuFormat');
+
+let addTask, listAll, updateTask, deleteTask, showTaskState, searchById, readData;
 
 const pause = () => { 
     return new Promise ((resolve, reject) => {
@@ -23,7 +17,7 @@ const pause = () => {
     });
 }
 
-(async () => {
+const menuMain = async (jsonMongo) => {
     let opt = '';
     do {    
         opt = await main();
@@ -60,4 +54,26 @@ const pause = () => {
         }
         if (opt !== '0') await pause();
     } while (opt !== '0');        
+};
+
+(async () => {
+    let opt = ''; 
+    opt = await menuFormat();
+    switch (opt) {
+        case '1': //JSON selected
+            addTask = require('./controllers/addtask');
+            listTask = require('./controllers/listtask');  
+            listAll = require('./controllers/listall'); 
+            updateTask = require('./controllers/updatetask');  
+            deleteTask = require('./controllers/deletetask');  
+            showTaskState = require('./controllers/showtaskstate');  
+            searchById = require('./controllers/searchbyid');  
+            readData = require('./controllers/readData');  
+            menuMain(opt);
+        break; 
+        case '2':
+            updateTask = require('./controllers/updatetask_mdb'); 
+        break;
+    
+    }     
 })();
