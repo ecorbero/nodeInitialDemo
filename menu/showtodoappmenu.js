@@ -1,4 +1,4 @@
-const main = () => {
+const showTodoAppMenu = () => {
     return new Promise ((resolve, reject) => {
         console.clear();
         console.log("----- TO-DO App -----");
@@ -22,4 +22,4 @@ const main = () => {
     });
 }
 
-module.exports = main;
+module.exports = showTodoAppMenu;

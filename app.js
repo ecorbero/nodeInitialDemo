@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
-const main = require('./menu/main');
+const showTodoAppMenu = require('./menu/showtodoappmenu');
 const showMenu = require('./menu/showMenu');
 const menuFormat = require('./menu/menuFormat');
 
-let addTask, listAll, updateTask, deleteTask, showTaskState, searchById, readData;
+let addTask, listAll, deleteTask, searchById, readData;
+let {updateTask, showTaskState} = require('./controllers/updatetask_mdb.js');
 
 const pause = () => { 
     return new Promise ((resolve, reject) => {
@@ -20,10 +21,9 @@ const pause = () => {
 }
 
 const menuMain = async (jsonMongo) => {
-    
     let opt = '';
     do {    
-        opt = await main();
+        opt = await showTodoAppMenu();
         switch (opt) {
             case '1':
                 const userName = await showMenu('Write your username: ');
@@ -34,20 +34,19 @@ const menuMain = async (jsonMongo) => {
                 const id2 = await showMenu('Write ID to update: ');
                 if (jsonMongo === '1') {
                     if (searchById(readData(), id2) === -1) {
-                        console.log("Task doesn't exist.");                    
+                        console.log(`Task ${id2} doesn't exist.`);                    
                     } else {
                         const state = await showMenu('Select pending/executing/completed: ');
                         updateTask(id2, state);
                     }    
                 } else if (jsonMongo === '2') {
                     if (await searchById(id2) === null) {
-                        console.log("Task doesn't exist.");                    
+                        console.log(`Task ${id2} doesn't exist.`);                    
                     } else {
                         const state = await showMenu('Select pending/executing/completed: ');
                         updateTask(id2, state);
                     }    
                 }
-        
             break;
             case '3':
                 const id3 = await showMenu('Write ID to delete: ');
@@ -85,12 +84,10 @@ const menuMain = async (jsonMongo) => {
             menuMain(opt);
         break; 
         case '2': //Mongo DB selected
-            mainDB().catch(err => console.log(err));
-            async function mainDB() {
+            main().catch(err => console.log(err));
+            async function main() {
                 await mongoose.connect('mongodb://localhost:27017/todoDB'); 
             }
-            updateTask = require('./controllers/updatetask_mdb'); 
-            showTaskState = require('./controllers/updatetask_mdb'); 
             searchById = require('./controllers/searchbyid_mdb');  
             menuMain(opt);
         break;
