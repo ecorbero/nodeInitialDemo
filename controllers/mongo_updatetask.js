@@ -4,8 +4,8 @@
  * 
  */
 
-const formatDate = require('../controllers/formatdate.js')
-const searchById = require('./searchbyid_mdb.js');
+const formatDate = require('./formatdate.js')
+const searchById = require('./mongo_searchbyid.js');
 const ToDo = require('../models/todo');
 const mongoose = require('mongoose');
 

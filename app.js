@@ -5,7 +5,7 @@ const showMenu = require('./menu/showMenu');
 const menuFormat = require('./menu/menuFormat');
 
 let addTask, listAll, deleteTask, searchById, readData;
-let {updateTask, showTaskState} = require('./controllers/updatetask_mdb.js');
+let {updateTask, showTaskState} = require('./controllers/mongo_updatetask.js');
 
 const pause = () => { 
     return new Promise ((resolve, reject) => {
@@ -88,7 +88,8 @@ const menuMain = async (jsonMongo) => {
             async function main() {
                 await mongoose.connect('mongodb://localhost:27017/todoDB'); 
             }
-            searchById = require('./controllers/searchbyid_mdb');  
+            searchById = require('./controllers/mongo_searchbyid.js');  
+            //addTask = require('./controllers/mongo_addtask.js');  
             menuMain(opt);
         break;
     
