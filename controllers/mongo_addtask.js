@@ -1,8 +1,8 @@
 //open connection to database
 const mongoose = require('mongoose');
-
 const ToDo = require("../models/todo");
 
+// Create Add Task
 const addTask = async (userNameInput,taskNameInput) => {
   // Connect Mongo
   await mongoose.connect('mongodb://localhost:27017/todoDB');
@@ -24,23 +24,35 @@ const addTask = async (userNameInput,taskNameInput) => {
   );
   
   // Save New Object
-  await newTodo.save();
+  let taskAdded =  await newTodo.save();
+  
+  // Console log
+  console.log(`New Task "${taskNameInput}" added by "${userNameInput}"`);
 }
 
-//addTask("paco","fer coses 2").catch(err => console.log(err));
+// execute Add Task
+//addTask ("enric 3","taskNameInput 3");
+
+// Create Delete Task
 const deleteTask = async (inputId) => {
   // Connect Mongo
   await mongoose.connect('mongodb://localhost:27017/todoDB');
-  ToDo.deleteOne( {"id": inputId}).remove({ _id: req.body.id }, function(err) {
-    if (!err) {
-            message.type = 'notification!';
+  
+  // find by id
+  ToDo.find({ id: inputId })
+  .then(res=> {
+    console.log((`Removed ${res[0].text} Task from to Do List`))
     }
-    else {
-            message.type = 'error';
-    };
+  )
+  .catch(err=> console.log(`The Task Number ${inputId} Does Not exist.`))
 
+  // Delete the document by its _id
+  
+  await ToDo.deleteOne({ id: inputId })
+  
 }
 
+// Execute Delete Task
 deleteTask(2);
 
 module.exports = addTask;
