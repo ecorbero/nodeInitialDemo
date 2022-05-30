@@ -24,7 +24,7 @@ const addTask = async (userNameInput,taskNameInput) => {
   );
   
   // Save New Object
-  let taskAdded =  await newTodo.save();
+  await newTodo.save();
   
   // Console log
   console.log(`New Task "${taskNameInput}" added by "${userNameInput}"`);
@@ -35,24 +35,28 @@ const addTask = async (userNameInput,taskNameInput) => {
 
 // Create Delete Task
 const deleteTask = async (inputId) => {
-  // Connect Mongo
-  await mongoose.connect('mongodb://localhost:27017/todoDB');
-  
-  // find by id
-  ToDo.find({ id: inputId })
-  .then(res=> {
-    console.log((`Removed ${res[0].text} Task from to Do List`))
-    }
-  )
-  .catch(err=> console.log(`The Task Number ${inputId} Does Not exist.`))
+  try{
 
-  // Delete the document by its _id
-  
-  await ToDo.deleteOne({ id: inputId })
-  
+    // Connect Mongo
+    await mongoose.connect('mongodb://localhost:27017/todoDB');
+    
+    // Find One and Delete
+    let doc = await ToDo.findOneAndDelete({'id': inputId})
+    // If Object with id NOT found
+    if (doc === null) {
+      console.log(`The Task Number ${inputId} Does Not exist.`)
+    } 
+    // If Object with id found
+    else {
+      console.log(`Removed ${doc.text} Task from to Do List`);
+    }
+    
+  } catch(err) {
+    console.log("Error : ", err);
+  }
 }
 
 // Execute Delete Task
-deleteTask(2);
+deleteTask(1);
 
 module.exports = addTask;
