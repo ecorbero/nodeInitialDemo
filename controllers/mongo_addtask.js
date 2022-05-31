@@ -6,7 +6,6 @@ const ToDo = require("../models/todo");
 const addTask = async (userNameInput,taskNameInput) => {
   try{
     // Connect Mongo
-    await mongoose.connect('mongodb://localhost:27017/todoDB');
 
     // Find the biggest id number:
     let foundMax = await ToDo.find().sort({"id":-1}).limit(1);
@@ -43,7 +42,7 @@ const deleteTask = async (inputId) => {
   try{
 
     // Connect Mongo
-    await mongoose.connect('mongodb://localhost:27017/todoDB');
+    //await mongoose.connect('mongodb://localhost:27017/todoDB');
     
     // Find One and Delete
     let doc = await ToDo.findOneAndDelete({'id': inputId})
@@ -64,4 +63,4 @@ const deleteTask = async (inputId) => {
 // Execute Delete Task
 //deleteTask(2);
 
-module.exports = addTask;
+module.exports = {addTask, deleteTask};
