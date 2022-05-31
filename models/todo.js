@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 
 //creating schema
-const todoSchema = new mongoose.Schema({
-                _id:  int,    
+
+//TO DO articulate the properties and keys of
+//the schema should we have a userId? should each document
+// be a user with an array of tasks? 
+const taskSchema = new mongoose.Schema({
+                id:  Number,    
                 text: String, 
                 state: { type: String, default: 'pending' }, 
                 initDate: { type: Date, default: Date.now }, 
-                completData: { type: Date, default: null },
+                completDate: { type: Date, default: null },
                 userName: { type: String, required: true }
-});
-
+            });
 
 //compiling the schema into a Model.
-const ToDo = mongoose.model('ToDo', todoSchema);
+const ToDo = mongoose.model('ToDo', taskSchema);
 
 module.exports = ToDo;
 

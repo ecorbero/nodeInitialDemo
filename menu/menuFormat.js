@@ -1,13 +1,10 @@
-const main = () => {
+const menuFormat = () => {
     return new Promise ((resolve, reject) => {
         console.clear();
         console.log("----- TO-DO App -----");
-        console.log('1. Add Task');
-        console.log('2. Update Task');
-        console.log('3. Delete Task');
-        console.log('4. List Task');
-        console.log('5. List All');
-        console.log('6. Show Task State');
+        console.log('Select which format you want to work with:');
+        console.log('1. JSON');
+        console.log('2. Mongo DB');
         console.log('0. Exit \n');
 
         const readline = require('readline').createInterface({
@@ -22,4 +19,4 @@ const main = () => {
     });
 }
 
-module.exports = main;
+module.exports = menuFormat;
