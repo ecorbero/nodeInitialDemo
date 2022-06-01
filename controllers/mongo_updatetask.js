@@ -9,18 +9,6 @@ const searchById = require('./mongo_searchbyid.js');
 const ToDo = require('../models/todo');
 const mongoose = require('mongoose');
 
-/*  main().catch(err => console.log(err));
-
-async function main() {
-    await mongoose.connect('mongodb://localhost:27017/todoDB');
-
-}    */
-
-/* let toDo1 = new ToDo({id: 1, text: 'Something to do 3.', userName: 'Elías'})
-let toDo2 = new ToDo({id: 2, text: 'Something to do 4.', userName: 'Zúmel'})
-toDo1.save()
-toDo2.save()   */
-
 const updateTask = async (id, newState) => {
     const filter = { id: id };
     const updateState = { state: newState };
@@ -37,7 +25,7 @@ const updateTask = async (id, newState) => {
         console.log(`Task with ID ${id} is ${newState}.`)
     }      
 }
-//updateTask(2, 'completed')
+
 const showTaskState = async (id) => {
     const filter = { id: id };
     let task = await ToDo.find (filter);
