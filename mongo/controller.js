@@ -3,39 +3,16 @@
 
 const ToDo = require("./todo");
 
-//open conncetion to database
 const mongoose = require('mongoose');
 main().catch(err => console.log(err));
 
 //TO DO the config of the path should probably be parametres???
 async function main() {
     await mongoose.connect('mongodb://localhost:27017/todo');
-}
 
 
 
-
-
-//searchById
-//(ToDo.find({}))
-
-//LIST OF QUERIES:
-//https://mongoosejs.com/docs/api/query.html
-
-
-const addTask = async(text, userName) => {
-/*
-Would it be something like this?
-const todo1 = new ToDo( {text:someText, 
-     userName: someName}); */
-
-
-}
-
-
-listTask
-
-const listAll = async () => {
+  const listAll = async () => {
     try {
         const list = await ToDo.find();
         console.log(list);
@@ -43,20 +20,28 @@ const listAll = async () => {
     console.error(err);
     }
 }
-                  
-updateTask
-// one option incorporates the search logic
-// ToDo.updateOne()
-// ToDo.findOneAndUpdate()
-                  
-deleteTask
-//one option incorporates the search logic
-// ToDo.deleteOne()
-// ToDo.findOneAndDelete()
+  
 
-                  
-showTaskState 
-//
+const listTask = async (userId) => {
+     try{
+        const queryTask = await ToDo.findOne({'id': userId});
+        console.log(queryTask);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+const showTask = async (userId) => {
+      try{
+          const queryTask = await ToDo.findOne({id: userId});
+          console.log(queryTask(id, task));
+       } catch (err) {
+           console.error(err);
+       }
+  }
+
+
+     
 
 
 
