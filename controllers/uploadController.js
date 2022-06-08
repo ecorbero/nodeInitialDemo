@@ -1,6 +1,6 @@
 //const uploadFile = require("../middleware/uploadMiddleware");
 
-const upload = async (req, res) => {
+const upload =  (req, res) => {
   
   try {
     //await uploadFile(req, res);

@@ -2,35 +2,42 @@
 
 //
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const fileUpload = require('express-fileupload');
-
-global.__basedir = __dirname;
+const { check, header } = require('express-validator');
 
 // Controladors
 const userController = require('./controllers/userController');
 const uploadController = require('./controllers/uploadController');
-
-// Middlewares
-const uploadMiddleware = require("./middleware/uploadMiddleware");
+const timeController = require('./controllers/timeController');
 
 // Afegir Middlewares
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+const uploadMiddleware = require("./middleware/uploadMiddleware");
+const { validarFormulari, authUser, noCacheControl } = require('./middleware/timeMiddlewares');
 
 // Assign Port
 const port = 3000
 
-// Routes
-
+// Routes Nivell 1
 app.get("/users", userController);
 app.post('/upload', uploadMiddleware, uploadController);
 
-// finally, launch our server on port 3001.
+
+// Routes Nivell 2
+app.post('/time',[
+  cors(),
+  noCacheControl,
+  header('user', 'Falta Usuari (min 3 caràcters)').isLength({min:3}),
+  header('pass', 'Falta Contrasenya (min 6 caràcters)').isLength({min:6}),   
+  check('username', 'Indicar un username').not().isEmpty(),
+  validarFormulari,                          
+  authUser
+], timeController);
+
+// finally, launch our server on port 3000.
 const server = app.listen(port, () => {
     console.log('listening on port %s...', server.address().port);
   });
