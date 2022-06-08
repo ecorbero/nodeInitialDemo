@@ -10,6 +10,6 @@ https://remotestack.io/create-node-express-multer-file-upload-download-rest-api/
 
 1.- Instal·lar projecte node : "$ npm install"
 2.- Executa "npm run dev" a la consola del directori arrel.
-3.- Get users. Postamn: "GET", "http://localhost:3000/users"
+3.- Get users. Postman: "GET", "http://localhost:3000/users"
 4.- Upload file. Postman: "POST", "http://localhost:3000/upload", key = "imageUpload".
  
