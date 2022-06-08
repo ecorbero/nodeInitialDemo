@@ -11,6 +11,7 @@ require('dotenv').config();
 const userController = require('./controllers/userController');
 const uploadController = require('./controllers/uploadController');
 const timeController = require('./controllers/timeController');
+const pokemonController = require('./controllers/pokemonController');
 
 // Afegir Middlewares
 app.use(cors());
@@ -37,6 +38,12 @@ app.post('/time',[
   validarFormulari,                          
   authUser
 ], timeController);
+
+// Routes Nivell 3
+app.get('/pokemon/:id', [
+  check('id','Posar id vàlid').isInt(),
+  validarFormulari
+], pokemonController);
 
 // finally, launch our server on port 3000.
 const server = app.listen(port, () => {
