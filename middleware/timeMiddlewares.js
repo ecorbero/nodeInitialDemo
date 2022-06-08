@@ -7,7 +7,7 @@ const authUser = (req, res, next) => {
     if(user !== USER || pass !== PASS) {
         res.status(401).json({
             status:"Error", 
-            msg:"Usuari i/o contrasenya incorrectes"
+            msg:"401 - Unauthorized => Usuari i/o contrasenya incorrectes"
         });
         return;
     }
