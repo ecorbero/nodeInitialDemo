@@ -131,40 +131,54 @@
 			"response": []
 		},
 		{
-			"name": "POST time Wrong Pass",
+			"name": "GET pokemon",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "user",
-						"value": "enric",
-						"type": "text"
-					},
-					{
-						"key": "pass",
-						"value": "30003000",
-						"type": "text"
-					}
-				],
+				"method": "GET",
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "enricco",
-							"type": "text"
-						}
-					]
+					"urlencoded": []
 				},
 				"url": {
-					"raw": "http://localhost:3000/time",
+					"raw": "http://localhost:3000/pokemon/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"time"
+						"pokemon",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET pokemon (No existeix)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/pokemon/5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokemon",
+						"5000"
 					]
 				}
 			},

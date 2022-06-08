@@ -1,13 +1,13 @@
 "use strict";
 
-//
+// Afegir Mòduls de Node
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const { check, header } = require('express-validator');
 require('dotenv').config();
 
-// Controladors
+// Afegir Controladors
 const userController = require('./controllers/userController');
 const uploadController = require('./controllers/uploadController');
 const timeController = require('./controllers/timeController');
@@ -32,7 +32,7 @@ app.post('/upload', uploadMiddleware, uploadController);
 app.post('/time',[
   cors(),
   noCacheControl,
-  header('user', 'Falta Usuari (min 3 caràcters)').isLength({min:3}),
+  header('user', 'Falta Usuari (min 6 caràcters)').isLength({min:6}),
   header('pass', 'Falta Contrasenya (min 6 caràcters)').isLength({min:6}),   
   check('username', 'Indicar un username').not().isEmpty(),
   validarFormulari,                          
