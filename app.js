@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const { check, header } = require('express-validator');
+require('dotenv').config();
 
 // Controladors
 const userController = require('./controllers/userController');
