@@ -101,7 +101,7 @@
 			"response": []
 		},
 		{
-			"name": "POST time No username",
+			"name": "POST time Incorrect Password",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -116,6 +116,16 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "enricco",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
 					"raw": "http://localhost:3000/time",
 					"protocol": "http",

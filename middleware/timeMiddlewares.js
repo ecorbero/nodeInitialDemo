@@ -1,13 +1,3 @@
-const { validationResult } = require('express-validator');
-
-const validarFormulari = ( req, res, next ) => {
-
-    const errors = validationResult(req);
-    if ( !errors.isEmpty()){
-        return res.status(400).json(errors);
-    }
-    next();
-}
 
 
 const authUser = (req, res, next) => {
@@ -24,13 +14,15 @@ const authUser = (req, res, next) => {
     next();
 }
 
-const noCacheControl = (req, res, next) => {
-    res.set('Cache-control', 'no-cache'); 
+const nocache = (req, res, next) => {
+    
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
     next();
 }
 
 module.exports = {
-  validarFormulari,
     authUser,
-    noCacheControl
+    nocache
 }

@@ -4,7 +4,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const { check, header } = require('express-validator');
 require('dotenv').config();
 
 // Afegir Controladors
@@ -18,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const uploadMiddleware = require("./middleware/uploadMiddleware");
-const { validarFormulari, authUser, noCacheControl } = require('./middleware/timeMiddlewares');
+const { authUser, nocache } = require('./middleware/timeMiddlewares');
 
 // Assign Port
 const port = 3000
@@ -31,19 +30,12 @@ app.post('/upload', uploadMiddleware, uploadController);
 // Routes Nivell 2
 app.post('/time',[
   cors(),
-  noCacheControl,
-  header('user', 'Falta Usuari (min 6 caràcters)').isLength({min:6}),
-  header('pass', 'Falta Contrasenya (min 6 caràcters)').isLength({min:6}),   
-  check('username', 'Indicar un username').not().isEmpty(),
-  validarFormulari,                          
+  nocache,                         
   authUser
 ], timeController);
 
 // Routes Nivell 3
-app.get('/pokemon/:id', [
-  check('id','Posar id vàlid').isInt(),
-  validarFormulari
-], pokemonController);
+app.get('/pokemon/:id', pokemonController);
 
 // finally, launch our server on port 3000.
 const server = app.listen(port, () => {
