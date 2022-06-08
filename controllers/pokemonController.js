@@ -17,17 +17,21 @@ const pokemonController = async (req, res) => {
   }
    
   
-  const {name, height, weight, sprites} = response.data;
+  const name = response.data.name;
+  const height = response.data.height;
+  const weight = response.data.weight;
+  const sprite = response.data.sprites.front_default || "no sprite available";
   
   const pokemon = {
+      id,
       name,
       height,
       weight,
-      sprite: sprites.front_default || "no sprite available"
+      sprite
   }
   
   res.status(200).json({
-      status:"OK",
+      status:"Tot correcte",
       pokemon
   });
 
