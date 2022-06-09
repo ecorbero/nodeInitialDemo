@@ -14,5 +14,5 @@ function errorHandler(err, req, res, next) {
   return res.sendStatus(500).json({message: err.message});;
 }
 module.exports = {
-  errorHandler,
+  errorHandler
 }

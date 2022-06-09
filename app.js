@@ -11,7 +11,7 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
-  useNewUrlPrser: true,
+  useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(
   () => {
@@ -26,16 +26,16 @@ auth.authenticateToken.unless = unless;
 app.use(
   auth.authenticateToken.unless({
     path: [
-      {url: "users/login", methods: ["POST"]},
-      {url: "users/register", methods: ["POST"]},
+      {url: "/users/login", methods: ["POST"]},
+      {url: "/users/register", methods: ["POST"]},
     ],
   }),
 );
 
 app.use(express.json());
+app.use(errors.errorHandler);
 
 app.use("/users", require("./routes/users.routes"));
-app.use(errors.errorHandler);
 
 app.listen(process.env.port || 4000, function() {
   console.log("Ready to Go!");
