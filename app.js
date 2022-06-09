@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dbConfig = require('.config/db.config');
+const dbConfig = require('./config/db.config');
 
 const auth = require('./middlewares/auth');
 const errors = require('./middlewares/errors');
 
-const unless = require('express-unless');
+const {unless} = require('express-unless');
 
 const app = express();
 
@@ -24,12 +24,12 @@ mongoose.connect(dbConfig.db, {
 
 auth.authenticateToken.unless = unless;
 app.use(
-  auth.authenticateToken.unles({
+  auth.authenticateToken.unless({
     path: [
       {url: "users/login", methods: ["POST"]},
-      {url: "users/register", methods: ["POST"]}
-    ]
-  })
+      {url: "users/register", methods: ["POST"]},
+    ],
+  }),
 );
 
 app.use(express.json());
