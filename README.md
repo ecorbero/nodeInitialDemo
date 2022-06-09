@@ -1,8 +1,9 @@
 # Instruccions
 
 1. Instal·lar projecte node : "$ npm install"
-2. Executa "npm run dev" a la consola del directori arrel.
-3. Postman Collection => Postamn_collections/Api 4.1 Collection.postman_collection.json
+2. Canviar ".env-dev.txt" a ".env"
+3. Executa "npm run dev" a la consola del directori arrel.
+4. Postman Collection => Postamn_collections/Api 4.1 Collection.postman_collection.json
 
 # Bibliografia
 ### Nivell 1. Exercici 1:
