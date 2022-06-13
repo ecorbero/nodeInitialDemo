@@ -76,7 +76,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"enric\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"enric@gmail.com\"\r\n}",
+					"raw": "{\r\n    \"username\": \"enric2\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"enric2@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -84,13 +84,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:4000/users/register",
+					"raw": "localhost:4000/register",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"users",
 						"register"
 					]
 				}
@@ -112,13 +111,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:4000/users/login",
+					"raw": "localhost:4000/login",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"users",
 						"login"
 					]
 				}
@@ -140,13 +138,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:4000/users/login",
+					"raw": "localhost:4000/login",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"users",
 						"login"
 					]
 				}
