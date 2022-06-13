@@ -13,7 +13,7 @@ router.get("/userProfile", adminController.userProfile);
 
 // player Controllers
 router.post("/players", playersController.newPlayer);
-router.put("/players/{id}", playersController.namePlayer);
+router.put("/players/:id", playersController.renamePlayer);
 router.get("/players", playersController.listPlayers);
 
 // games Controllers

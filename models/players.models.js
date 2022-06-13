@@ -6,7 +6,7 @@ const playersSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true, partialFilterExpression: { username: { $eq: "ANÒNIM" } },
+    unique: true, //partialFilterExpression: { username: { $eq: "ANÒNIM" } },
   },
   date: {
     type: Date,
