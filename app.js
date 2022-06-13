@@ -22,6 +22,7 @@ mongoose.connect(dbConfig.db, {
   }
 );
 
+
 auth.authenticateToken.unless = unless;
 app.use(
   auth.authenticateToken.unless({
@@ -33,9 +34,9 @@ app.use(
 );
 
 app.use(express.json());
-app.use(errors.errorHandler);
 
 app.use("/users", require("./routes/users.routes"));
+app.use(errors.errorHandler);
 
 app.listen(process.env.port || 4000, function() {
   console.log("Ready to Go!");
