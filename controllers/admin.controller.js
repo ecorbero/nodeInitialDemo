@@ -1,5 +1,5 @@
 const bcryptjs = require('bcryptjs');
-const userService = require('../services/users.services');
+const userService = require('../services/admins.services');
 
 exports.register = (req, res, next) => {
   const {password} = req.body;

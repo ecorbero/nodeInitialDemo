@@ -1,9 +1,9 @@
-const User = require("../models/user.models");
+const Admin = require("../models/admin.models");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
 
 async function login({ username, password}, callback) {
-  const user = await User.findOne({ username});
+  const user = await Admin.findOne({ username});
 
   if (user != null) {
     if (bcrypt.compareSync(password, user.password)) {
@@ -28,7 +28,7 @@ async function register(params, callback) {
     return callback({message: "Username Required"});
   }
 
-  const user = new User(params);
+  const user = new Admin(params);
   user.save()
   .then((response) => {
     return callback(null, response)

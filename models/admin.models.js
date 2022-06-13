@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const uniqueValidator = require("mongoose-unique-validator");
 
-const userSchema = new Schema({
+const adminSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -22,7 +22,7 @@ const userSchema = new Schema({
   },
 });
 
-userSchema.set("toJSON", {
+adminSchema.set("toJSON", {
   transform: (document, returnObject) => {
     returnObject.id = returnObject._id.toString(),
     delete returnObject._id;
@@ -32,8 +32,8 @@ userSchema.set("toJSON", {
   },
 });
 
-userSchema.plugin(uniqueValidator, {message: "Email already in use"});
+adminSchema.plugin(uniqueValidator, {message: "Email already in use"});
 
-const User = mongoose.model("user", userSchema);
+const Admin = mongoose.model("admin", adminSchema);
 
-module.exports = User;
+module.exports = Admin;
