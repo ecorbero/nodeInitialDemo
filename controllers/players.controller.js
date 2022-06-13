@@ -4,7 +4,6 @@ const Players = require('../models/players.models');
 
 exports.newPlayer = async (req, res) => {
 
-
   const data = new Players({
     username: req.body.username,
     date: req.body.date
