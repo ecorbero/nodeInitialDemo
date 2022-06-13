@@ -13,8 +13,9 @@
 - POST /players: => Registrar usuaris
   - Registrar jugadors amb un nom únic => se li assigna un identificador únic ($id) i una data de registre ($date).
   -  Els jugadors també es poden registrar amb nom “ANÒNIM”, que no serà únic.  => se li assigna un identificador únic ($id) i una data de registre ($date).
-_____
 - PUT /players/{id}: => Modifica el nom del jugador ($id)
+
+_____
 - GET /players: => Llistar tots els jugadors del sistema, amb el seu percentatge d’èxits, i percentatge d’èxit mig de tots els jugadors 
 - POST /games/{id}:=> Fer una tirada d'un jugador específic ($id). resultat = 7, ($id) guanya la partida, si no ($id) perd
 - DELETE /games/{id}: => Eliminar totes les tirades d'un jugador ($id)
