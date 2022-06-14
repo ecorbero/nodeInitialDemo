@@ -12,6 +12,10 @@ const playersSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  games: {
+    type: [Number],
+    required: false,
+  },
 });
 
 playersSchema.set("toJSON", {

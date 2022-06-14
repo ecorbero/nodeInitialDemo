@@ -32,19 +32,120 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxMDQ0MTcsImV4cCI6MTY1NTEwODAxN30.zBdy_eR1cFRaTH9VKTjhb9qOix5P9euUcp8Nkm6Zv1U",
+						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxOTI4MzMsImV4cCI6MTY4NjcyODgzM30.XRd-Pvuo4Vsk187CNuSrCvDKz7SScPWznb1lQT1cBOM",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:4000/users/userProfile",
+					"raw": "localhost:4000/userProfile",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"users",
 						"userProfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "newPlayer (with Token => success) Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxOTI4MzMsImV4cCI6MTY4NjcyODgzM30.XRd-Pvuo4Vsk187CNuSrCvDKz7SScPWznb1lQT1cBOM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Player 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/players/",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"players",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "renamePlayer (with Token => success) Copy 2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxOTI4MzMsImV4cCI6MTY4NjcyODgzM30.XRd-Pvuo4Vsk187CNuSrCvDKz7SScPWznb1lQT1cBOM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"playere pepe\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/players/62a714222dcf94a19d216e24",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"players",
+						"62a714222dcf94a19d216e24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putGame (with Token => success)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxOTI4MzMsImV4cCI6MTY4NjcyODgzM30.XRd-Pvuo4Vsk187CNuSrCvDKz7SScPWznb1lQT1cBOM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"points\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/games/62a84320465dca996817654e",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"games",
+						"62a84320465dca996817654e"
 					]
 				}
 			},

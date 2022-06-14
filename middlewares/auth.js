@@ -15,7 +15,7 @@ function authenticateToken(req,res,next) {
 
 function generateAccesssToken(username) {
   return jwt.sign({data:username},"Snippet_SecretKEY", {
-    expiresIn: "1h"
+    expiresIn: "365d" //"1h"
   })
 } 
 
