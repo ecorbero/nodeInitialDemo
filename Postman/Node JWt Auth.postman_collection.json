@@ -152,6 +152,42 @@
 			"response": []
 		},
 		{
+			"name": "getPlayers (with Token => success)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxOTI4MzMsImV4cCI6MTY4NjcyODgzM30.XRd-Pvuo4Vsk187CNuSrCvDKz7SScPWznb1lQT1cBOM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/players",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "register (no data => error)",
 			"request": {
 				"method": "POST",

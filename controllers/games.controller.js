@@ -17,11 +17,11 @@ exports.postGame = async (req, res) => {
   }
 }
 
-exports.deleteGames = (req, res) => {
+exports.deleteGames = async  (req, res) => {
 
 }
 
 
-exports.listGames = (req, res) => {
+exports.listGames = async  (req, res) => {
 
 }
