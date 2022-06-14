@@ -188,6 +188,77 @@
 			"response": []
 		},
 		{
+			"name": "listGames (with Token => success)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxOTI4MzMsImV4cCI6MTY4NjcyODgzM30.XRd-Pvuo4Vsk187CNuSrCvDKz7SScPWznb1lQT1cBOM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/games/62a84323465dca9968176552",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"games",
+						"62a84323465dca9968176552"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteGames (with Token => success)",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZW5yaWMiLCJpYXQiOjE2NTUxOTI4MzMsImV4cCI6MTY4NjcyODgzM30.XRd-Pvuo4Vsk187CNuSrCvDKz7SScPWznb1lQT1cBOM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/games/62a84323465dca9968176552",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"games",
+						"62a84323465dca9968176552"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "register (no data => error)",
 			"request": {
 				"method": "POST",

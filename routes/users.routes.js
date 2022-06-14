@@ -19,7 +19,7 @@ router.get("/players", playersController.listPlayers);
 // games Controllers
 router.post("/games/:id", gamesController.postGame);
 router.delete("/games/:id", gamesController.deleteGames);
-router.get("/games/:id}", gamesController.listGames);
+router.get("/games/:id", gamesController.listGames);
 
 // ranking Controllers
 router.get("ranking", rankingController.rankingGames);
