@@ -6,10 +6,14 @@ exports.postGame = async (req, res) => {
 
   try {
       const id = req.params.id;
-      const updatedData = req.body.points;
+      const updatedData = req.body.games;
+      const updateAverage = req.body.average;
+      const updateNumGames = await Players.find({_id: id}).select('numGames') + 1;
+      console.log(updateNumGames
+        )
       const options = { new: true };
       
-      const result = await Players.updateOne( {_id: id}, { $push: { games : [ updatedData] } }, options );
+      const result = await Players.updateOne( {_id: id}, { $push: { games : [ updatedData] }, average: updateAverage,numGames: updateNumGames  }, options );
 
       res.send(result)
   }

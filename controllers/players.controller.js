@@ -8,7 +8,9 @@ exports.newPlayer = async (req, res) => {
   // Input data
   const data = new Players({
     username: req.body.username,
-    date: req.body.date
+    date: req.body.date,
+    average: 0,
+    numGames: 0,
   })
 
   try {

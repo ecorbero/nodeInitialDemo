@@ -12,9 +12,14 @@ const playersSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  games: {
-    type: [Number],
-    required: false,
+  games: [{dau1: Number, dau2: Number}],
+  average: {
+    type: Number,
+    required: true,
+  },
+  numGames:{
+    type: Number,
+    required: true,
   },
 });
 
