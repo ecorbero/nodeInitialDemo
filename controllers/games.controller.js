@@ -6,11 +6,17 @@ exports.postGame = async (req, res) => {
 
   try {
       const id = req.params.id;
-      const updatedData = req.body.games;
-      const updateAverage = req.body.average;
-      const updateNumGames = await Players.find({_id: id}).select('numGames') + 1;
-      console.log(updateNumGames
-        )
+      const updatedData = req.body;
+      const resData = await Players.findOne({_id: id});
+      const updateNumGames = resData.numGames + 1;
+      const totalPoints = updatedData.dau1 + updatedData.dau2;
+      // check if Success => totalPoints = 7
+      var success = 0;
+      if (totalPoints == 7) {
+        success = 1;
+      }
+      const updateAverage = (resData.average * resData.numGames + success) / updateNumGames;
+      
       const options = { new: true };
       
       const result = await Players.updateOne( {_id: id}, { $push: { games : [ updatedData] }, average: updateAverage,numGames: updateNumGames  }, options );
@@ -29,7 +35,7 @@ exports.deleteGames = async  (req, res) => {
     const id = req.params.id;
     const options = { new: true };
     
-    const result = await Players.updateOne( {_id: id}, { $set: { games : [ ] } }, options );
+    const result = await Players.updateOne( {_id: id}, { $set: { games : [ ] }, average: 0,numGames: 0 }, options );
 
     res.send(result)
 }
@@ -45,23 +51,8 @@ exports.listGames = async  (req, res) => {
     
     const id = req.params.id;
 
-    const result  = await Players.find({_id: id});
+    const result  = await Players.find({_id: id},{games:1,average:1});
     res.status(200).json(result)
-
-    const playerName = result[0].username;
-    const arrayGames = result[0].games;
-    var wins = 0;
-    console.log(`Nom del Jugador =  ${playerName}`)
-    for (let index = 0; index < arrayGames.length; index++) {
-      const element = arrayGames[index];
-      if (element == 7) {
-        wins ++;
-      }
-      console.log(`Jugada ${index}, resultat = ${element}, ${element == 7 ? 'partida guanyada!' : 'failed!'}`)
-    }
-    
-    console.log(`Percentatge d’èxit de totes les tirades = ${(100 * wins/arrayGames.length).toFixed()} %`)
-
   } catch (err) {
     console.error(err);
   } 

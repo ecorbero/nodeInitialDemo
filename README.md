@@ -17,11 +17,10 @@
 - POST /games/{id}:=> Fer una tirada d'un jugador específic ($id)
 - GET /players: => Llistar tots els jugadors del sistema, amb el seu percentatge d’èxits, i percentatge d’èxit mig de tots els jugadors. resultat = 7, ($id) guanya la partida, si no ($id) perd
 - DELETE /games/{id}: => Eliminar totes les tirades d'un jugador ($id)
+
 - GET /games/{id}: => Retornar el llistat de jugades d'un jugador ($id)
   - Mostar el valor de cada dau, i si ha guanyat la partida (resultat == 7)
   - Mostar percentatge d’èxit de totes les tirades 
-
-_____ 
 - GET /ranking: => Retornar un ranking de jugadors ordenat per percentatge d'èxits, i el percentatge d’èxits mig del conjunt de tots els jugadors
 - GET /ranking/loser: => Retornar el jugador amb pitjor percentatge d’èxit
 - GET /ranking/winner: => Retornar el jugador amb millor percentatge d’èxit

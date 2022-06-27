@@ -33,6 +33,9 @@ exports.renamePlayer = async (req, res) => {
       const updatedData = req.body;
       const options = { new: true };
 
+      console.log
+      
+
   // Sava data to Mongo DB
       const result = await Players.updateOne({_id: id}, updatedData, options);
 
@@ -47,25 +50,11 @@ exports.renamePlayer = async (req, res) => {
 // List all Players
 exports.listPlayers = async (req, res) => {
   try {
-    const result  = await Players.find();
-    res.status(200).json(result)
+    const result  = await Players.find({},{username:1,average:1});
 
-    var percentatgeTotal = 0;
-    result.forEach(player => {
-      const playerName = player.username;
-      const playerGames = player.games;
-      var exits = 0;
-      playerGames.forEach(element => {
-        if (element == 7) {
-          exits ++;
-        }
-      });
-      var percentatgeExits = (exits/playerGames.length * 100);
-      percentatgeTotal += percentatgeExits;
-      console.log(`${playerName}, percentatge d'èxit = ${percentatgeExits.toFixed()} %`);
-    });
+    console.log(result);
 
-    console.log(`Percentatge total d'èxits =  ${percentatgeTotal/result.length} % `)
+    res.status(200).json(result);
 
   } catch (err) {
     console.error(err);

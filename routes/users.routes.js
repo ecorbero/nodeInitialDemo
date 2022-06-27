@@ -22,7 +22,7 @@ router.delete("/games/:id", gamesController.deleteGames);
 router.get("/games/:id", gamesController.listGames);
 
 // ranking Controllers
-router.get("ranking", rankingController.rankingGames);
+router.get("/ranking", rankingController.rankingGames);
 router.get("/ranking/loser", rankingController.loser);
 router.get("/ranking/winner", rankingController.winner);
 
